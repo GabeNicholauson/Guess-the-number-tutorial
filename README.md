@@ -1,6 +1,7 @@
-This tutorial will help you understand the basics of the JavaScript for the number guessing game. The number guessing game is a faily simple one. The computer will generate a random number in a range set by the developer, and the player has to input their guess in the designated box and press the buttonto confirm the guess. The computer should then tell the player if their guess is correct or not, and if the guess is higher or lower than the generated number. If the player guesses the correct number, the computer should also tell the player how many guesses they took.
+This tutorial will help you understand the basics of the JavaScript for the number guessing game. The number guessing game is a fairly simple one. The computer will generate a random number in a range set by the developer, and the player has to input their guess in the designated box and press the button to confirm the guess. The computer should then tell the player if their guess is correct or not, and if the guess is higher or lower than the generated number. If the player guesses the correct number, the computer should also tell the player how many guesses they took.
 
-You will want to start out by giving JavaScript the ability to interact with your elements. This can be done with the ```document.querySelector()``` function. Simply create a variable and put ```document.querySelector()``` where you would put the value. In the parenthesis, put the name of the class or id you want the variable to point to in quotes. heres what it would look like:
+## querySelector()
+You will want to start out by giving JavaScript the ability to interact with your elements. This can be done with the ```document.querySelector()``` function. Simply create a variable and put ```document.querySelector()``` where you would put the value. In the parenthesis, put the name of the class or id you want the variable to point to in quotes. Heres what it would look like:
 
 ```js
 let guess = document.querySelector('.guess');
@@ -10,8 +11,11 @@ let totalGuesses = document.querySelector('.total-guesses');
 ```
 Keep in mind that ```document.querySelector()``` will select the first element with the class you give it. 
 
-We will also want to keep track of how many guesses the player has made, so make a variable and set its value to 0 like so let guessCount = 0;. Generating a random number is a little bit tricky but isn't very complicated. You will use Math.random() and Math.trunc() to round the number. Math.random() will generate a random number from 0 to 1 and Math.Trunc will round the number down. To get a random number in a specific range you create a variable and set its value to ```Math.trunc(Math.random() * 50 + 1);```. 50 can be switched out for whatever number you want and will be the range that you want.
+## Counting guesses and generating random numbers
+We will also want to keep track of how many guesses the player has made, so make a variable and set its value to 0 like so ```let guessCount = 0;```. Generating a random number is a little bit tricky but isn't very complicated. You will use ```Math.random()``` and ```Math.trunc()``` to round the number. ```Math.random()``` will generate a random number from 0 to 1 and Math.Trunc will round the number down. To get a random number in a specific range you create a variable and set its value to ```Math.trunc(Math.random() * 50 + 1);```. 50 can be switched out for whatever number you want and will be the range that you want.
+```let number = Math.trunc(Math.random() * 50 + 1);```
 
+## addEventListener
 Next on the list is to make your button react to being pressed. In this case I have referred to the button as "guessButton" and made it point to the element with the class "enter-guess". To add functionality to it all we're going to do is give it a "click" event listener:
 
 ```js
@@ -21,6 +25,7 @@ guessButton.addEventListener('click', () => {
 ```
 The eventListener will act like a function everytime the player clicks the button. It will call other functions do verify the guess and give feedback.
 
+## functions
 First let's make a function that counts how many guesses the player has made. Create a function, give it a name, and inside the function simply increment the guess count by one.
 
 ```js
@@ -45,7 +50,7 @@ function checkGuess(playerGuess) {
     }
 }
 ```
-The first if will check if the player even entered a guess at all. If not then the value of the result element will change to inform the player they didn't enter anything. depending on the kind of element you used, you may have to change ```.value``` to ```.innerHTML```. the first if else will check if the guess isn't a number with ```isNaN()```. ```isNaN()``` will check if anything you put in the parenthesis isn't a number and return true or false. The rest simply checks if the guess is higher lower or equal to the random number.
+The first if will check if the player even entered a guess at all. If not then the value of the result element will change to inform the player they didn't enter anything. depending on the kind of element you used, you may have to change ```.value``` to ```.innerHTML```. the first if else will check if the guess isn't a number with ```isNaN()```. ```isNaN()``` will check if anything you put in the parenthesis isn't a number and return true or false. The rest simply checks if the guess is higher, lower or equal to the random number.
 
 Once you have your functions made, add them to the event listener.
 ```js
@@ -54,6 +59,7 @@ guessButton.addEventListener('click', () => {
     checkGuess(guess.value.trim());
 });
 ```
+```trim()``` will get rid of any extra whitespace the player enters.
 You should now have a simple working guess the number game.
 
 Click [here](https://gabenicholauson.github.io/Guess-the-number-tutorial/) to view the game
