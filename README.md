@@ -1,7 +1,8 @@
 This tutorial will help you understand the basics of the JavaScript for the number guessing game. The number guessing game is a fairly simple one. The computer will generate a random number in a range set by the developer, and the player has to input their guess in the designated box and press the button to confirm the guess. The computer should then tell the player if their guess is correct or not, and if the guess is higher or lower than the generated number. If the player guesses the correct number, the computer should also tell the player how many guesses they took.
 
 ## querySelector()
-You will want to start out by giving JavaScript the ability to interact with your elements. This can be done with the ```document.querySelector()``` function. Simply create a variable and put ```document.querySelector()``` where you would put the value. In the parenthesis, put the name of the class or id you want the variable to point to in quotes. Heres what it would look like:
+You will want to start out by giving JavaScript the ability to interact with your elements. This can be done with the ```document.querySelector()``` function. Simply create a variable and put ```document.querySelector()``` where you would put the value. In the parenthesis, put the name of the class or id you want the variable to point to in quotes. Here's what it would look like:
+
 
 ```js
 let guess = document.querySelector('.guess');
@@ -23,7 +24,7 @@ guessButton.addEventListener('click', () => {
 
 });
 ```
-The eventListener will act like a function everytime the player clicks the button. It will call other functions do verify the guess and give feedback.
+The eventListener will act like a function every time the player clicks the button. It will call other functions to verify the guess and give feedback.
 
 ## functions
 First let's make a function that counts how many guesses the player has made. Create a function, give it a name, and inside the function simply increment the guess count by one.
@@ -33,7 +34,7 @@ function countGuess() {
     guessCount++;
 }
 ```
-The next function will chack the player's guess, compare it to the randomly generated one and give feedback to the player. It should tell the player if the number was too high, too low, not a number at all and if the player guessed correctly. This can be done by chaining a few if else statements.
+The next function will check the player's guess, compare it to the randomly generated one and give feedback to the player. It should tell the player if the number was too high, too low, not a number at all and if the player guessed correctly. This can be done by chaining a few if else statements.
 
 ```js
 function checkGuess(playerGuess) {
