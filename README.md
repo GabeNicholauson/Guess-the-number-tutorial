@@ -6,7 +6,44 @@ You will want to start out by giving JavaScript the ability to interact with you
 let guess = document.querySelector('.guess');
 let guessButton = document.querySelector('.enter-guess');
 let result = document.querySelector('.result');
+let totalGuesses = document.querySelector('.total-guesses');
 ```
 Keep in mind that ```document.querySelector()``` will select the first element with the class you give it. 
 
-We will also want to keep track of how many guesses the player has made, so make a variable and set its value to 0 like so let guessCount = 0;. Generating a random number is a little bit tricky but isn't very complicated. You will use Math.random() and Math.trunc() to round the number. Math.random() will generate a random number from 0 to 1 and Math.Trunc will round the number down. To get a random number in a specific range you will do ```Math.trunc(Math.random() * 50 + 1);```. 50 can be switched out for whatever number you want. 
+We will also want to keep track of how many guesses the player has made, so make a variable and set its value to 0 like so let guessCount = 0;. Generating a random number is a little bit tricky but isn't very complicated. You will use Math.random() and Math.trunc() to round the number. Math.random() will generate a random number from 0 to 1 and Math.Trunc will round the number down. To get a random number in a specific range you create a variable and set its value to ```Math.trunc(Math.random() * 50 + 1);```. 50 can be switched out for whatever number you want and will be the range that you want.
+
+Next on the list is to make your button react to being pressed. In this case I have referred to the button as "guessButton" and made it point to the element with the class "enter-guess". To add functionality to it all we're going to do is give it a "click" event listener:
+
+```js
+guessButton.addEventListener('click', () => {
+
+});
+```
+The eventListener will act like a function everytime the player clicks the button. It will call other functions do verify the guess and give feedback.
+
+First let's make a function that counts how many guesses the player has made. Create a function, give it a name, and inside the function simply increment the guess count by one.
+
+```js
+function countGuess() {
+    guessCount++;
+}
+```
+The next function will chack the player's guess, compare it to the randomly generated one and give feedback to the player. It should tell the player if the number was too high, too low, not a number at all and if the player guessed correctly. This can be done by chaining a few if else statements.
+
+```js
+function checkGuess(playerGuess) {
+    if (playerGuess === '') {
+        result.value = 'Please enter a guess';
+    } else if (isNaN(playerGuess)) {
+        result.value = 'Please enter a number';
+    } else if (playerGuess > number) {
+        result.value = 'Too high';
+    } else if (playerGuess < number) {
+        result.value = 'Too low'
+    } else if (Number(playerGuess) === number) {
+        result.value = `You guessed the number in ${guessCount} tries!`;
+    }
+}
+```
+The first if will check if the player even entered a guess at all. If not then the value of the result element will change to inform the player they didn't enter anything. depending on the kind of element you used, you may have to change ```.value``` to ```.innerHTML```. the first if else will check if the guess isn't a number with ```isNaN()```. ```isNaN()``` will check if anything you put in the parenthesis isn't a number and return true or false. The rest simply checks if the guess is higher lower or equal to the random number.
+
