@@ -47,3 +47,12 @@ function checkGuess(playerGuess) {
 ```
 The first if will check if the player even entered a guess at all. If not then the value of the result element will change to inform the player they didn't enter anything. depending on the kind of element you used, you may have to change ```.value``` to ```.innerHTML```. the first if else will check if the guess isn't a number with ```isNaN()```. ```isNaN()``` will check if anything you put in the parenthesis isn't a number and return true or false. The rest simply checks if the guess is higher lower or equal to the random number.
 
+Once you have your functions made, add them to the event listener.
+```js
+guessButton.addEventListener('click', () => {
+    countGuess();
+    checkGuess(guess.value.trim());
+});
+```
+You should now have a simple working guess the number game.
+
