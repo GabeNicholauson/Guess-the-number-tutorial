@@ -56,3 +56,4 @@ guessButton.addEventListener('click', () => {
 ```
 You should now have a simple working guess the number game.
 
+Click [here](https://gabenicholauson.github.io/Guess-the-number-tutorial/) to view the game
